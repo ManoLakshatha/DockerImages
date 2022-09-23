@@ -63,7 +63,7 @@
                     <div class="container">
                       <h5>Add Shipments</h5>
                      <form method="post" action="#" th:object="${shipment}" th:action="@{createShipment}">
-                     <div id="error" th:text="${error}"></div>
+                     <div id="error" th:text="${error}" class="mb-4 py-2  "></div>
     <div id="success" th:text="${success}"></div>
         	<div class="row mb-4 ">
             <label for="invoiceNumber" class="col-sm-2 col-form-label">Shipment/Invoice Number</label>

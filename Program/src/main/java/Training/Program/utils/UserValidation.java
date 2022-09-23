@@ -23,7 +23,16 @@ public class UserValidation {
 
 	    public static boolean validateEmail(String email) throws Exception {
 	    	  final Pattern EMAIL_REGEX = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", Pattern.CASE_INSENSITIVE);
-	    	    return EMAIL_REGEX.matcher(email).matches();
+	    	   
+	    	    if(email.isBlank())
+		            throw new Exception("email required!");
+		        else if(! EMAIL_REGEX.matcher(email).matches())
+		            throw new Exception("invalid email!");
+		        else {
+		        	return true;
+		        }
+		            
+		        
 	    }
 	    
 	    
