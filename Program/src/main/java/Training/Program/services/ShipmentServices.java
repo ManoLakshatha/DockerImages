@@ -8,6 +8,7 @@ import static Training.Program.constants.Constants.uri;
 import java.util.Vector;
 
 import org.bson.Document;
+import org.springframework.stereotype.Service;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -16,6 +17,7 @@ import com.mongodb.client.MongoDatabase;
 
 import Training.Program.repositories.ShipmentRepository;
 
+@Service
 public class ShipmentServices implements ShipmentRepository {
 
 	  private static final MongoDatabase database;
