@@ -11,7 +11,7 @@
         let userText = document.querySelector('#textBox');
         let submitButton = document.querySelector('#submitButton');
         let output = document.querySelector('#error');
-        output.style.fontSize = "100%";output.style.color = "red";
+        output.style.fontSize = "95%";output.style.color = "red";
         let refreshButton = document.querySelector('#reload-button');
 
         let alphaNums = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -56,7 +56,6 @@
             ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
             output.innerHTML = "";
         });
-        
         
     function onSubmit(token) {
         document.getElementById("demo-form").submit();

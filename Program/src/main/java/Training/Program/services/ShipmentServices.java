@@ -34,28 +34,29 @@ public class ShipmentServices implements ShipmentRepository {
 
 	    
 	    
+		@Override
+		public void addShipment(String username, String si_no, String container_no, String desc, String route,
+				String goods, String device, String date, String po_no, String delivery_no, String ndc_no,
+				String batch_id, String serial_no) {
+			 Document document = new Document();
+		        document.append("username", username);
+		        document.append("invoiceNumber", si_no);
+		        document.append("containerNumber",container_no);
+		        document.append("shipmentDescription", desc);
+		        document.append("routeDetail", route);
+		        document.append("goodsType", goods);
+		        document.append("device", device);
+		        document.append("expectedDeliverydate", date);
+		        document.append("poNumber", po_no);
+		        document.append("deliveryNumber", delivery_no);
+		        document.append("NdcNumber", ndc_no);
+		        document.append("batchId", batch_id);
+		        document.append("serialNumber", serial_no);
+		        shipments.insertOne(document);
+			
+		}
 	    
-	    
-	    
-	    public void addShipment(String username, String si_no,String container_no, String desc, String route,String goods,String device,
-	             String date, String po_no,String delivery_no,String ndc_no,String batch_id,String serial_no){
-	        Document document = new Document();
-	        document.append("username", username);
-	        document.append("invoiceNumber", si_no);
-	        document.append("containerNumber",container_no);
-	        document.append("shipmentDescription", desc);
-	        document.append("routeDetail", route);
-	        document.append("goodsType", goods);
-	        document.append("device", device);
-	        document.append("expectedDeliverydate", date);
-	        document.append("poNumber", po_no);
-	        document.append("deliveryNumber", delivery_no);
-	        document.append("NdcNumber", ndc_no);
-	        document.append("batchId", batch_id);
-	        document.append("serialNumber", serial_no);
-	        shipments.insertOne(document);
-	    }
-	    
+	 
 	    
 	    
 	    public static Vector<String> getDeviceIDs(){
@@ -73,5 +74,7 @@ public class ShipmentServices implements ShipmentRepository {
 	            devices.add(document);
 	        return devices;
 	    }
+
+	
 
 }

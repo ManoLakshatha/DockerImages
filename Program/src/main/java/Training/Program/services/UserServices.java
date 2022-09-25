@@ -34,7 +34,7 @@ public class UserServices implements UserRepository {
 	    private static final MongoCollection<Document> users = database.getCollection(users_collection);
 
 	  
-
+	    @Override
 	    public void addUser(String username,String email, String password){
 	        Document document = new Document();
 	        document.append("_id", username);
