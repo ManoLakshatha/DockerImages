@@ -2,7 +2,7 @@ package Training.Program.controllers;
 
 import static Training.Program.constants.Constants.password_match_error;
 import static Training.Program.constants.Constants.registration_success;
-import static Training.Program.services.Mongodb.isUsernameAvailable;
+import static Training.Program.services.UserServices.isUsernameAvailable;
 
 
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Training.Program.models.Users;
-import Training.Program.services.Mongodb;
+import Training.Program.services.UserServices;
 
 import static Training.Program.utils.FormValidation.validateUsername;
 import static Training.Program.utils.FormValidation.validateEmail;
@@ -26,7 +26,18 @@ import static Training.Program.utils.FormValidation.validatePassword;
 @RequestMapping(path = "")
 public class UserController {
 
-    @GetMapping(path = "register")
+	
+	
+	private UserServices mongo;
+	
+	
+	
+    public UserController(UserServices mongo) {
+		super();
+		this.mongo = mongo;
+	}
+
+	@GetMapping(path = "register")
     public String viewRegistrationPage(Model model){
         model.addAttribute("user", new Users());
         return "register";
@@ -46,7 +57,7 @@ public class UserController {
             if(!user.confirmPassword())
                 throw new Exception(password_match_error);
             
-            Mongodb.addUser(user.getUserName(), user.getEmailId(),user.getPassword());
+            mongo.addUser(user.getUserName(), user.getEmailId(),user.getPassword());
             
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

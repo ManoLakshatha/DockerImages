@@ -2,8 +2,7 @@
  * 
  */
  
- 
-let captchaText = document.querySelector('#captcha');
+  let captchaText = document.querySelector('#captcha');
         console.log(captchaText);
         var ctx = captchaText.getContext("2d");
         ctx.font = "30px Roboto";
@@ -47,7 +46,7 @@ let captchaText = document.querySelector('#captcha');
 
         refreshButton.addEventListener('click', function() {
             userText.value = "";
-           // document.getElementById("submit").style.display = "none";
+            document.getElementById("submit").style.display = "none";
             let refreshArr = [];
             for (let j = 1; j <= 7; j++) {
                 refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
@@ -58,7 +57,6 @@ let captchaText = document.querySelector('#captcha');
             output.innerHTML = "";
         });
         
-       
         
     function onSubmit(token) {
         document.getElementById("demo-form").submit();

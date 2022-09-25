@@ -24,7 +24,8 @@ import static Training.Program.utils.FormValidation.notEmpty;
 
 import Training.Program.models.Shipments;
 import Training.Program.models.Users;
-import Training.Program.services.Mongodb;
+import Training.Program.services.ShipmentServices;
+import Training.Program.services.UserServices;
 
 
 
@@ -33,8 +34,17 @@ import Training.Program.services.Mongodb;
 public class ShipmentController {
 
     private Users user = null;
+    private ShipmentServices shipment_service;
+    
+    
 
-    @GetMapping(path = "login")
+    public ShipmentController(ShipmentServices shipment_service) {
+		super();
+		this.shipment_service = shipment_service;
+	}
+    
+
+	@GetMapping(path = "login")
     public String viewLoginPage(Model model){
         if(this.user != null)
             return "redirect:/api/dashboard";
@@ -47,7 +57,7 @@ public class ShipmentController {
         if(this.user != null)
             return "redirect:/api/dashboard";
         try{
-            Mongodb.authenticateUser(user.getUserName(), user.getPassword());
+            UserServices.authenticateUser(user.getUserName(), user.getPassword());
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             model.addAttribute("user", new Users());
@@ -81,7 +91,7 @@ public class ShipmentController {
         if(this.user == null)
             return "redirect:/api/login";
         else{
-            model.addAttribute("devices", Mongodb.getDevices());
+            model.addAttribute("devices", ShipmentServices.getDevices());
             return "deviceDataStream";
         }
     }
@@ -92,7 +102,7 @@ public class ShipmentController {
             return "redirect:/api/login";
         else{
             model.addAttribute("shipment", new Shipments());
-            model.addAttribute("devices", Mongodb.getDeviceIDs());
+            model.addAttribute("devices", ShipmentServices.getDeviceIDs());
             return "createShipment";
         }
     }
@@ -102,7 +112,7 @@ public class ShipmentController {
         if(this.user == null)
             return "redirect:/api/login";
         else{
-            model.addAttribute("devices", Mongodb.getDeviceIDs());
+            model.addAttribute("devices", ShipmentServices.getDeviceIDs());
             try {
             	notEmpty(shipment.getInvoiceNumber(), shipment_number);
                 notEmpty(shipment.getContainerNumber(),  container_number);
@@ -117,7 +127,7 @@ public class ShipmentController {
                 notEmpty(shipment.getBatchId(), batch_id);
                 notEmpty(shipment.getSerialNumber(),serial_number);
                 
-                Mongodb.addShipment(this.user.getUserName(), shipment.getInvoiceNumber(), shipment.getContainerNumber(),
+                shipment_service.addShipment(this.user.getUserName(), shipment.getInvoiceNumber(), shipment.getContainerNumber(),
                         shipment.getShipmentDescription(), shipment.getRouteDetail(), shipment.getGoodsType(), shipment.getDevice(), shipment.getExpectedDeliverydate(), shipment.getPoNumber(), shipment.getDeliveryNumber(),
                         shipment.getNdcNumber(), shipment.getBatchId(), shipment.getSerialNumber());  
                
