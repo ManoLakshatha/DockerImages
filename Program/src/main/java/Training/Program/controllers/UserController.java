@@ -17,6 +17,8 @@ import Training.Program.services.Mongodb;
 import static Training.Program.utils.UserValidation.validateUsername;
 import static Training.Program.utils.UserValidation.validateEmail;
 import static Training.Program.utils.UserValidation.validatePassword;
+import static Training.Program.utils.Constants.password_match_error;
+import static Training.Program.utils.Constants.registration_success;
 
 
 
@@ -42,15 +44,16 @@ public class UserController {
             validatePassword(user.getPassword());
             
             if(!user.confirmPassword())
-                throw new Exception("Passwords don't match!");
+                throw new Exception(password_match_error);
             
             Mongodb.addUser(user.getUserName(), user.getEmailId(),user.getPassword());
+            
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             model.addAttribute("user", user);
             return "register";
         }
-        model.addAttribute("success", "Registration Successful!");
+        model.addAttribute("success", registration_success);
         model.addAttribute("user", new Users());
         return "register";
     }

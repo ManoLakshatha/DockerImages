@@ -47,7 +47,7 @@ let captchaText = document.querySelector('#captcha');
 
         refreshButton.addEventListener('click', function() {
             userText.value = "";
-            document.getElementById("submit").style.display = "none";
+           // document.getElementById("submit").style.display = "none";
             let refreshArr = [];
             for (let j = 1; j <= 7; j++) {
                 refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
