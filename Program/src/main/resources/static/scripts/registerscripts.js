@@ -60,26 +60,4 @@
     function onSubmit(token) {
         document.getElementById("demo-form").submit();
       }
-    function validateUsername(){
-        var username = document.getElementById("username").value;
-        var valid = new RegExp("^[A-Aa-z]{1}[A-Za-z _-]{3,}").test(username);
-        if(valid){document.getElementById("username").style.backgroundColor = "#ddffdd";}
-        else{document.getElementById("username").style.backgroundColor = "#ffdddd";}
-    }
-    function validateEmail(){
-        var userEmail = document.getElementById("emailId").value;
-        var valid = new RegExp("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/").test(userEmail);
-        if(valid){document.getElementById("emailId").style.backgroundColor = "#ddffdd";}
-        else{document.getElementById("emailId").style.backgroundColor = "#ffdddd";}
-    }
-    function validatePassword(){
-        var password = document.getElementById("password").value;
-        var valid = new RegExp("(?=(.*[a-z]){2,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,})(?=(.*[^A-Za-z0-9<>;&]){2,})").test(password);
-        if(valid){document.getElementById("password").style.backgroundColor = "#ddffdd";}
-        else{document.getElementById("password").style.backgroundColor = "#ffdddd";}
-    }
-    function confirmPassword(){
-         if(document.getElementById("password").value == document.getElementById("confirm").value)
-         {document.getElementById("confirm").style.backgroundColor = "#ddffdd";}
-        else{document.getElementById("confirm").style.backgroundColor = "#ffdddd";}
-    }
+   

@@ -12,7 +12,7 @@ html{
     --bs-gutter-x: 0 !important;
 }
 .side-panel{
-    /* background: #EEF2FF; */
+   
     background-color:#050A30;
     height: 100vh;
     border-radius: 3px;
@@ -53,7 +53,7 @@ html{
   
 }
 
-/* =============================================== */
+
 
 .admin-container {
     display: grid;

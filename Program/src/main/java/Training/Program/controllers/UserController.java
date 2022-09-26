@@ -23,7 +23,6 @@ import static Training.Program.utils.FormValidation.validatePassword;
 
 
 @Controller
-@RequestMapping(path = "")
 public class UserController {
 
 	
