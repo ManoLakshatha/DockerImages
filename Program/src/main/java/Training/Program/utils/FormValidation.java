@@ -1,18 +1,19 @@
 package Training.Program.utils;
 
-import java.util.regex.Pattern;
-import static Training.Program.utils.Constants.password_length_error;
-import static Training.Program.utils.Constants.special_case_error;
-import static Training.Program.utils.Constants.upper_case_error;
-import static Training.Program.utils.Constants.lower_case_error;
-import static Training.Program.utils.Constants.number_error;
-import static Training.Program.utils.Constants.username_length_error;
-import static Training.Program.utils.Constants.username_error;
-import static Training.Program.utils.Constants.username_case_error;
-import static Training.Program.utils.Constants.email_blank;
-import static Training.Program.utils.Constants.email_error;
+import static Training.Program.constants.Constants.email_blank;
+import static Training.Program.constants.Constants.email_error;
+import static Training.Program.constants.Constants.lower_case_error;
+import static Training.Program.constants.Constants.number_error;
+import static Training.Program.constants.Constants.password_length_error;
+import static Training.Program.constants.Constants.special_case_error;
+import static Training.Program.constants.Constants.upper_case_error;
+import static Training.Program.constants.Constants.username_case_error;
+import static Training.Program.constants.Constants.username_error;
+import static Training.Program.constants.Constants.username_length_error;
 
-public class UserValidation {
+import java.util.regex.Pattern;
+
+public class FormValidation {
 
 	
 	  public static boolean validateUsername(String username) throws Exception {

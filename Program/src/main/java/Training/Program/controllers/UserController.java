@@ -1,5 +1,7 @@
 package Training.Program.controllers;
 
+import static Training.Program.constants.Constants.password_match_error;
+import static Training.Program.constants.Constants.registration_success;
 import static Training.Program.services.Mongodb.isUsernameAvailable;
 
 
@@ -14,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import Training.Program.models.Users;
 import Training.Program.services.Mongodb;
 
-import static Training.Program.utils.UserValidation.validateUsername;
-import static Training.Program.utils.UserValidation.validateEmail;
-import static Training.Program.utils.UserValidation.validatePassword;
-import static Training.Program.utils.Constants.password_match_error;
-import static Training.Program.utils.Constants.registration_success;
+import static Training.Program.utils.FormValidation.validateUsername;
+import static Training.Program.utils.FormValidation.validateEmail;
+import static Training.Program.utils.FormValidation.validatePassword;
 
 
 

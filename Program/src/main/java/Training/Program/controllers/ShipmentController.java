@@ -6,9 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import static Training.Program.utils.UserValidation.notEmpty;
 
-
+import static Training.Program.constants.Constants.batch_id;
+import static Training.Program.constants.Constants.container_number;
+import static Training.Program.constants.Constants.date;
+import static Training.Program.constants.Constants.delivery_number;
+import static Training.Program.constants.Constants.description;
+import static Training.Program.constants.Constants.device;
+import static Training.Program.constants.Constants.goods;
+import static Training.Program.constants.Constants.ndc_number;
+import static Training.Program.constants.Constants.po_numnber;
+import static Training.Program.constants.Constants.route;
+import static Training.Program.constants.Constants.serial_number;
+import static Training.Program.constants.Constants.shipment_number;
+import static Training.Program.constants.Constants.submitted_successfully;
+import static Training.Program.utils.FormValidation.notEmpty;
 
 import Training.Program.models.Shipments;
 import Training.Program.models.Users;
@@ -92,18 +104,18 @@ public class ShipmentController {
         else{
             model.addAttribute("devices", Mongodb.getDeviceIDs());
             try {
-            	notEmpty(shipment.getInvoiceNumber(), "Enter Shipment Number!");
-                notEmpty(shipment.getContainerNumber(), "Enter Container Number!");
-                notEmpty(shipment.getShipmentDescription(), "Provide a description!");
-                notEmpty(shipment.getRouteDetail(), "Select a Route!");
-                notEmpty(shipment.getGoodsType(), "Select Goods!");
-                notEmpty(shipment.getDevice(), "Select Device!");
-                notEmpty(shipment.getExpectedDeliverydate(), "Enter Date!");
-                notEmpty(shipment.getPoNumber(), "Enter PO Number!");
-                notEmpty(shipment.getDeliveryNumber(), "Enter Delivery Number!");
-                notEmpty(shipment.getNdcNumber(), "Enter NDC Number!");
-                notEmpty(shipment.getBatchId(), "Enter Batch ID!");
-                notEmpty(shipment.getSerialNumber(), "Enter Serial Number!");
+            	notEmpty(shipment.getInvoiceNumber(), shipment_number);
+                notEmpty(shipment.getContainerNumber(),  container_number);
+                notEmpty(shipment.getShipmentDescription(), description);
+                notEmpty(shipment.getRouteDetail(), route );
+                notEmpty(shipment.getGoodsType(), goods );
+                notEmpty(shipment.getDevice(), device);
+                notEmpty(shipment.getExpectedDeliverydate(), date);
+                notEmpty(shipment.getPoNumber(), po_numnber);
+                notEmpty(shipment.getDeliveryNumber(), delivery_number );
+                notEmpty(shipment.getNdcNumber(),ndc_number );
+                notEmpty(shipment.getBatchId(), batch_id);
+                notEmpty(shipment.getSerialNumber(),serial_number);
                 
                 Mongodb.addShipment(this.user.getUserName(), shipment.getInvoiceNumber(), shipment.getContainerNumber(),
                         shipment.getShipmentDescription(), shipment.getRouteDetail(), shipment.getGoodsType(), shipment.getDevice(), shipment.getExpectedDeliverydate(), shipment.getPoNumber(), shipment.getDeliveryNumber(),
@@ -114,7 +126,7 @@ public class ShipmentController {
                 model.addAttribute("shipment", shipment);
                 return "createShipment";
             }
-            model.addAttribute("success", "Submitted successfully!");
+            model.addAttribute("success", submitted_successfully);
             model.addAttribute("shipment", new Shipments());
             return "createShipment";
         }

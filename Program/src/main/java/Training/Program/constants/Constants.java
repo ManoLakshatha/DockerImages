@@ -1,4 +1,4 @@
-package Training.Program.utils;
+package Training.Program.constants;
 
 public final  class Constants {
 
@@ -34,6 +34,22 @@ public final  class Constants {
 	    public static final String incorrect_password ="Incorrect Password!";
 	    public static final String username_already_taken ="Username Already taken!";
 	   
+	    public static final String shipment_number ="Enter Shipment Number!";
+	    public static final String container_number ="Enter Container Number!";
+	    public static final String description ="Provide a description!";
+	    public static final String route ="Select a Route!";
+	    public static final String goods ="Select Goods!";
+	    public static final String device ="Select Device!";
+	    public static final String date ="Enter Date!";
+	    public static final String po_numnber ="Enter PO Number!";
+	    public static final String delivery_number ="Enter Delivery Number!";
+	    public static final String ndc_number ="Enter NDC Number!";
+	    public static final String batch_id ="Enter Batch ID!";
+	    public static final String serial_number ="Enter Serial Number!";
 	    
-//	
+	    
+	    
+	    
+	    public static final String submitted_successfully ="Submitted successfully!";
+	
 }

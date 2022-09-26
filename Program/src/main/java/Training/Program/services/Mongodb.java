@@ -9,15 +9,16 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import static Training.Program.utils.Constants.uri;
-import static Training.Program.utils.Constants.database_name;
-import static Training.Program.utils.Constants.users_collection;
-import static Training.Program.utils.Constants.shipments_collection;
-import static Training.Program.utils.Constants.username_already_taken;
-import static Training.Program.utils.Constants.user_not_found;
-import static Training.Program.utils.Constants.incorrect_password;
-import static Training.Program.utils.Constants.devices_collection;
-import static Training.Program.utils.UserValidation.myHash;
+
+import static Training.Program.constants.Constants.database_name;
+import static Training.Program.constants.Constants.devices_collection;
+import static Training.Program.constants.Constants.incorrect_password;
+import static Training.Program.constants.Constants.shipments_collection;
+import static Training.Program.constants.Constants.uri;
+import static Training.Program.constants.Constants.user_not_found;
+import static Training.Program.constants.Constants.username_already_taken;
+import static Training.Program.constants.Constants.users_collection;
+import static Training.Program.utils.FormValidation.myHash;
 
 
 
