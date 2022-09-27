@@ -1,5 +1,10 @@
 package Training.Program.models;
 
+import static Training.Program.constants.Constants.shipments_collection;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection=shipments_collection)
 public class Shipments {
 
 	

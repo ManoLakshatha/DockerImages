@@ -1,5 +1,10 @@
 package Training.Program.models;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+import static Training.Program.constants.Constants.users_collection;
+
+
+@Document(collection=users_collection)
 public class Users {
 	
 	
@@ -19,12 +24,12 @@ public class Users {
 			return userName;
 		}
 
-		public Users(String userName, String emailId, String password, String confirmPassword) {
+		public Users(String userName, String emailId, String password) {
 			super();
 			this.userName = userName;
 			this.emailId = emailId;
 			this.password = password;
-			this.confirmPassword = confirmPassword;
+			
 		}
 
 

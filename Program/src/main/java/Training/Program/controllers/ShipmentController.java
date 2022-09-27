@@ -1,5 +1,6 @@
 package Training.Program.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import static Training.Program.utils.FormValidation.notEmpty;
 
 import Training.Program.models.Shipments;
 import Training.Program.models.Users;
+import Training.Program.services.DeviceService;
 import Training.Program.services.ShipmentServices;
 import Training.Program.services.UserServices;
 
@@ -34,9 +36,11 @@ import Training.Program.services.UserServices;
 public class ShipmentController {
 
     private Users user = null;
+    @Autowired
     private ShipmentServices shipment_service;
     
-    
+    @Autowired
+    private DeviceService deviceService;
 
     public ShipmentController(ShipmentServices shipment_service) {
 		super();
@@ -57,7 +61,7 @@ public class ShipmentController {
         if(this.user != null)
             return "redirect:/api/dashboard";
         try{
-            UserServices.authenticateUser(user.getUserName(), user.getPassword());
+          //  UserServices.authenticateUser(user.getUserName(), user.getPassword());
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             model.addAttribute("user", new Users());
@@ -91,7 +95,7 @@ public class ShipmentController {
         if(this.user == null)
             return "redirect:/api/login";
         else{
-            model.addAttribute("devices", ShipmentServices.getDevices());
+            model.addAttribute("devices", deviceService.getDevices());
             return "deviceDataStream";
         }
     }
@@ -102,7 +106,7 @@ public class ShipmentController {
             return "redirect:/api/login";
         else{
             model.addAttribute("shipment", new Shipments());
-            model.addAttribute("devices", ShipmentServices.getDeviceIDs());
+            model.addAttribute("devices", deviceService.getDeviceIDs());
             return "createShipment";
         }
     }
@@ -112,7 +116,7 @@ public class ShipmentController {
         if(this.user == null)
             return "redirect:/api/login";
         else{
-            model.addAttribute("devices", ShipmentServices.getDeviceIDs());
+            model.addAttribute("devices", deviceService.getDeviceIDs());
             try {
             	notEmpty(shipment.getInvoiceNumber(), shipment_number);
                 notEmpty(shipment.getContainerNumber(),  container_number);
@@ -127,9 +131,7 @@ public class ShipmentController {
                 notEmpty(shipment.getBatchId(), batch_id);
                 notEmpty(shipment.getSerialNumber(),serial_number);
                 
-                shipment_service.addShipment(this.user.getUserName(), shipment.getInvoiceNumber(), shipment.getContainerNumber(),
-                        shipment.getShipmentDescription(), shipment.getRouteDetail(), shipment.getGoodsType(), shipment.getDevice(), shipment.getExpectedDeliverydate(), shipment.getPoNumber(), shipment.getDeliveryNumber(),
-                        shipment.getNdcNumber(), shipment.getBatchId(), shipment.getSerialNumber());  
+                shipment_service.saveShipment(shipment) ;
                
             }catch (Exception e) {
                 model.addAttribute("error", e.getMessage());

@@ -1,10 +1,12 @@
 package Training.Program.repositories;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import Training.Program.models.Shipments;
+
+
 @Repository
-public interface ShipmentRepository {
+public interface ShipmentRepository extends MongoRepository<Shipments,String>{
 	
-	void addShipment(String username, String si_no,String container_no, String desc, String route,String goods,String device,
-            String date, String po_no,String delivery_no,String ndc_no,String batch_id,String serial_no);
 }

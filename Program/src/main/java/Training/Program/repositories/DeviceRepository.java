@@ -3,10 +3,9 @@ package Training.Program.repositories;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import Training.Program.models.Users;
+import Training.Program.models.Devices;
 
 @Repository
-public interface UserRepository extends MongoRepository<Users,String> {
+public interface DeviceRepository extends MongoRepository<Devices,String>{
 
-	
 }

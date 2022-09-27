@@ -2,10 +2,9 @@ package Training.Program.controllers;
 
 import static Training.Program.constants.Constants.password_match_error;
 import static Training.Program.constants.Constants.registration_success;
-import static Training.Program.services.UserServices.isUsernameAvailable;
 
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +25,7 @@ import static Training.Program.utils.FormValidation.validatePassword;
 public class UserController {
 
 	
-	
+	@Autowired
 	private UserServices mongo;
 	
 	
@@ -48,7 +47,7 @@ public class UserController {
         	
             validateUsername(user.getUserName());
             
-            isUsernameAvailable(user.getUserName());
+           // isUsernameAvailable(user.getUserName());
             validateEmail(user.getEmailId());
             
             validatePassword(user.getPassword());
@@ -56,7 +55,7 @@ public class UserController {
             if(!user.confirmPassword())
                 throw new Exception(password_match_error);
             
-            mongo.addUser(user.getUserName(), user.getEmailId(),user.getPassword());
+            mongo.saveUser(user);
             
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
